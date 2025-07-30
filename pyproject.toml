@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ABV-Tasting-Event-Scraper"
+version = "1.0.0"
+description = "一個用於爬取 ABV 精釀啤酒餐廳品酒會活動資訊的工具。"
+authors = [
+    { name = "superTO" },
+]
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+dependencies = [
+    "playwright>=1.54.0",
+    "requests>=2.32.4"
+]
+
+[project.urls]
+Homepage = "https://github.com/superTO/ABV_Tasting_Event"
+Repository = "https://github.com/superTO/ABV_Tasting_Event.git"
+
+[project.optional-dependencies]
+dev = [
+]

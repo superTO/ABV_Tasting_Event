@@ -1,0 +1,40 @@
+name: 'line-message-api'
+
+on: 
+  workflow_dispatch:
+  schedule:
+    - cron:  "0 12 * * 1-5" # 要用臺灣時間減8小時。例如如果要在臺灣的半夜4點執行，則需要設為 "0 20 * * *"
+
+jobs:
+  line-notify-send-message:
+    # Assign GitHub Environments
+    environment: line-message-api
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python environment
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9.20'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Python script to send LINE message
+        run: |
+          python main.py --token ${{ secrets.CHANNEL_ACCESS_TOKEN }}
+      
+      
+      # 將更新後的 notified_events.json commit 並 push 回去
+      # 如果檔案有變更，才執行 commit 和 push
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add notified_events.json
+          git diff --quiet --staged || (git commit -m " chore: Update notified events list" && git push)
