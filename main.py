@@ -8,8 +8,8 @@ from line_message import broadcast_message_api, push_message_api
 
 # 記錄已通知活動的檔案名稱
 NOTIFIED_EVENTS_FILE = Path("notified_events.json")
-today = datetime.now().date()
-# today = date(2025, 7, 19)
+# today = datetime.now().date()
+today = date(2025, 7, 19)
 
 def parse_event_date(text_with_date: str) -> date | None:
     """
