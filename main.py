@@ -68,7 +68,7 @@ def run(playwright: Playwright) -> None:
     notified_events_set = load_notified_events()
     # print(f"已記錄 {len(notified_events_set)} 個活動。")
 
-    browser = playwright.chromium.launch(headless=False)
+    browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
     page.goto("https://www.abv.com.tw/category/%E5%93%81%E9%A3%B2%E6%9C%83/")
