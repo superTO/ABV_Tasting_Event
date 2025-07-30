@@ -10,6 +10,9 @@ jobs:
     # Assign GitHub Environments
     environment: line-message-api
     runs-on: ubuntu-latest
+    # need permissions to commit and push
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout repository
