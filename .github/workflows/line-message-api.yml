@@ -2,8 +2,8 @@ name: 'line-message-api'
 
 on: 
   workflow_dispatch:
-  schedule:
-    - cron:  "0 12 */3 * *" # 要用臺灣時間減8小時。例如如果要在臺灣的半夜4點執行，則需要設為 "0 20 * * *"
+  # schedule:
+  #   - cron:  "0 12 */3 * *" # 要用臺灣時間減8小時。例如如果要在臺灣的半夜4點執行，則需要設為 "0 20 * * *"
 
 jobs:
   line-notify-send-message:
